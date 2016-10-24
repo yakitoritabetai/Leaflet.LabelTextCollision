@@ -1,20 +1,19 @@
 # Leaflet.LabelTextCollision
-Leaflet.LabelTextCollision is a plug-in to display without colliding labels to leaflet.
+Leaflet.LabelTextCollision is a [LeafletJS](http://www.leafletjs.com) plug-in to display labels on vector data while avoiding label collisions.
 
 Supports Leaflet 1.0.0+ branches.
 
-To avoid the label of overlap. Rather than the relocation of the label, it does the preferentially displayed on the data order, overlapping place hides.
-That label you want to display preferentially should be arranged in ascending order.
+To avoid label overlapping, this plugin hides some labels. Labels defined first will have preference over labels defined last, so arrange your labels from the most important to the least important.
 
-L.LabelTextCollision has drawn inherit the L.Canvas.
-This is because the case the text is conflict because overlays item is large and browser becomes heavy.
+`L.LabelTextCollision` implements a `L.Renderer` based on `L.Canvas`, as to not create an excess of DOM elements which might slow down rendering in the browser.
 
 # demo
 Check out the <a href="https://yakitoritabetai.github.io/Leaflet.LabelTextCollision/">demo</a>
 
-
 # Usage examples
-* The value of the Map State Options renderer to set this plug-in (L.LabelTextCollision).
+
+* Create a new instance of `L.LabelTextCollision` specifying the collision flag option.
+* Use the map's `renderer` option to force rendering of vector data with that instance
 
 ```
 var labelTextCollision = new L.LabelTextCollision({
@@ -29,8 +28,8 @@ var map = new L.Map('map', {
 });
 ```
 
-* Overlays (Polygon, Polyline, Circle) to add the text to the option, to set the string you want to display as a label.
-  * Of course it can not be sure that there is enough space for text do not overlap.
+* Instances of `L.Path` (`L.Polyline`s, `L.Polygon`s, `L.Circle`s, `L.CircleMarker`s) have a new `text` option. Use it to specify the label contents.
+* The label will only be displayed if it doesn't collide with an existing label
 
 ```
 L.polyline(
@@ -44,8 +43,8 @@ L.polyline(
 ```
 
 # Future plans
-* The font of the label to the variable.
-* To control the overlap depending on the zoom level.
+* Add options to control styling of the labels (including font face)
+* Fine tuning of overlap depending on zoom level
 * Refactoring...
 
 # License
