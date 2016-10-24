@@ -1,5 +1,5 @@
 # Leaflet.LabelTextCollision
-Leaflet.LabelText is a plug-in to display without colliding labels to leaflet.
+Leaflet.LabelTextCollision is a plug-in to display without colliding labels to leaflet.
 
 Supports Leaflet 1.0.0+ branches.
 
