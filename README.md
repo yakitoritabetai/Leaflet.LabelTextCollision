@@ -8,7 +8,7 @@ To avoid the label of overlap. Rather than the relocation of the label, it does 
 That label you want to display preferentially should be arranged in ascending order.
 
 # demo
-Check out the <a href="#">demo</a>
+Check out the <a href="https://yakitoritabetai.github.io/Leaflet.LabelTextCollision/">demo</a>
 
 
 # Usage examples
