@@ -55,3 +55,4 @@ However, "copyright notice" should be indicated on the place where the user is v
 
 ただし、「著作権表示」はユーザが見える箇所に表記して下さい。
 ※画面のフッター等に著作権表示とMITライセンスであることを明記して下さい。
+ソース内ではクレジットと見なしません。
