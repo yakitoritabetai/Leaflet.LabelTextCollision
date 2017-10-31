@@ -1,7 +1,8 @@
 # Leaflet.LabelTextCollision
+
 Leaflet.LabelTextCollision is a [LeafletJS](http://www.leafletjs.com) plug-in to display labels on vector data while avoiding label collisions.
 
-Supports Leaflet 1.0.0+ branches.
+Supports Leaflet 1.2.0+ branches.
 
 To avoid label overlapping, this plugin hides some labels. Labels defined first will have preference over labels defined last, so arrange your labels from the most important to the least important.
 
@@ -32,14 +33,19 @@ var map = new L.Map('map', {
 * The label will only be displayed if it doesn't collide with an existing label
 
 ```
-L.polyline(
-  [ [ 35.695786, 139.749213 ],
-          [ 35.696786, 139.748213 ],
-          [ 35.695786, 139.747213 ] ], {
-      weight : 12,
-      color : '#fe57a1',
-      text : 'Leaflet.LabelTextCollision!!!!!!!!'
-  }).addTo(map);
+var p = L.polyline([[35.695786, 139.749213], [35.696786, 139.748213], [35.695786, 139.747213]], {
+    weight: 12,
+    color: '#fe57a1',
+
+    text: 'polylineText',
+    textStyle: {
+        stroke: true,
+        color: '#ff0000',
+        font: "16px 'Microsoft Yahei'",
+        offsetX: 0,
+        offsetY: 0,
+    }
+}).addTo(map);
 ```
 
 # Future plans
@@ -47,12 +53,4 @@ L.polyline(
 * Fine tuning of overlap depending on zoom level
 * Refactoring...
 
-# License
-Copyright (c) 2016 Kenta Hakoishi
-Released under the MIT license
-
-However, "copyright notice" should be indicated on the place where the user is visible.
-
-ただし、「著作権表示」はユーザが見える箇所に表記して下さい。
-※画面のフッター等に著作権表示とMITライセンスであることを明記して下さい。
-ソース内ではクレジットと見なしません。
+ 

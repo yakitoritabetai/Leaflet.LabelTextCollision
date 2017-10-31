@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" />
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="x5-fullscreen" content="true">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title>examples - Leaflet.LabelTextCollision</title>
+
+    <style type="text/css">
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+            overflow: hidden;
+            font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+            font-size: 13px;
+        }
+    </style>
+
+    <script src="libs/jquery-2.1.4.min.js"></script>
+    <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet/leaflet.js"></script>
+
+    <script src="../dist/L.LabelTextCollision.js"></script>
+</head>
+<body>
+    <div id="map" style="width: 60%; height: 600px"></div>
+    <br>
+    <input type="checkbox" checked onclick="setCollisionDetection(this.checked)"> Collision detection
+
+
+
+    <script>
+        $(document).ready(function () {
+            initMap();
+        });
+
+
+        var map;
+        var labelTextCollision;
+
+        function initMap() {
+            labelTextCollision = new L.LabelTextCollision({
+                collisionFlg: true //是否避免标签碰撞。
+            });
+
+            map = L.map("map", {
+                fadeAnimation: false, attributionControl: false, zoomControl: true,
+                maxZoom: 10, minZoom: 3, zoomSnap: .5, zoomDelta: .5,
+                renderer: labelTextCollision
+            });
+
+            L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+            map.setView([37, 105], 4);
+
+
+            //add test data
+            var p = L.polyline([[35.695786, 139.749213], [35.696786, 139.748213], [35.695786, 139.747213]], {
+                weight: 12,
+                color: '#fe57a1',
+                text: 'polylineText',
+                textStyle: {
+                    stroke: true,
+                    color: '#ff0000',
+                    font: "16px 'Microsoft Yahei'",
+                }
+            }).addTo(map);
+
+
+            var layers = L.featureGroup().addTo(map);
+
+            //添加随机数据演示
+            for (var i = 0; i < 3000; i++) {  
+                var latlng = getRandomLatLng();
+                var marker = L.circleMarker(latlng, {
+                    radius: 2,
+                    weight: 4,
+                    color: '#3388ff',
+
+                    //text: latlng.toString(),
+                    text: "muyao1987@qq.com",
+                    textStyle: {
+                        stroke: true,
+                        color: '#3388ff',
+                        font: "15px 'Microsoft Yahei'",
+                        offsetX: -70,
+                        offsetY: -10,
+                    }
+                }).bindPopup('木遥E-mail: muyao1987@qq.com');
+                layers.addLayer(marker); 
+            }
+             
+        }
+
+
+
+     
+
+
+
+        function setCollisionDetection(flg) {
+            labelTextCollision.options.collisionFlg = flg;
+            map.fitBounds(map.getBounds());
+        }
+
+         
+        function getRandomLatLng() {
+            var bounds = map.getBounds(),
+				southWest = bounds.getSouthWest(),
+				northEast = bounds.getNorthEast(),
+				lngSpan = northEast.lng - southWest.lng,
+				latSpan = northEast.lat - southWest.lat;
+
+            return L.latLng(
+					southWest.lat + latSpan * Math.random(),
+					southWest.lng + lngSpan * Math.random());
+        }
+    </script>
+</body>
+</html>
