@@ -8,7 +8,7 @@ To avoid label overlapping, this plugin hides some labels. Labels defined first 
 `L.LabelTextCollision` implements a `L.Renderer` based on `L.Canvas`, as to not create an excess of DOM elements which might slow down rendering in the browser.
 
 # demo 
-Check out the <a href="https://muyao1987.github.io/Leaflet.LabelTextCollision">demo</a>
+Check out the <a href="https://muyao1987.github.io/Leaflet.LabelTextCollision/examples">demo</a>
 
 # Usage examples
 
