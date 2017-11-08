@@ -1,4 +1,4 @@
-# Leaflet.LabelTextCollision
+﻿# Leaflet.LabelTextCollision
 Leaflet.LabelTextCollision is a [LeafletJS](http://www.leafletjs.com) plug-in to display labels on vector data while avoiding label collisions.
 
 Supports Leaflet 1.2.0+ branches.
@@ -46,3 +46,8 @@ var p = L.polyline([[35.695786, 139.749213], [35.696786, 139.748213], [35.695786
     }
 }).addTo(map);
 ``` 
+
+
+---------------------------
+更多Leaflet示例请点击： [http://leaflet.marsgis.cn](http://leaflet.marsgis.cn)
+三维地图请点击： [http://cesium.marsgis.cn](http://cesium.marsgis.cn)
