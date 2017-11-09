@@ -35,7 +35,7 @@
     <br>
     <input type="checkbox" checked onclick="setCollisionDetection(this.checked)"> Collision detection
 
-
+    
 
     <script>
         $(document).ready(function () {
@@ -77,7 +77,7 @@
             var layers = L.featureGroup().addTo(map);
 
             //添加随机数据演示
-            for (var i = 0; i < 3000; i++) {  
+            for (var i = 0; i < 3000; i++) {
                 var latlng = getRandomLatLng();
                 var marker = L.circleMarker(latlng, {
                     radius: 2,
@@ -85,7 +85,7 @@
                     color: '#3388ff',
 
                     //text: latlng.toString(),
-                    text: "muyao1987@qq.com",
+                    text: "www.marsgis.cn",
                     textStyle: {
                         stroke: true,
                         color: '#3388ff',
@@ -93,15 +93,15 @@
                         offsetX: -70,
                         offsetY: -10,
                     }
-                }).bindPopup('木遥E-mail: muyao1987@qq.com');
-                layers.addLayer(marker); 
+                }).bindPopup('<a href="http://www.marsgis.cn"  target="_blank">http://www.marsgis.cn</a>');
+                layers.addLayer(marker);
             }
-             
+
         }
 
 
 
-     
+
 
 
 
@@ -110,7 +110,7 @@
             map.fitBounds(map.getBounds());
         }
 
-         
+
         function getRandomLatLng() {
             var bounds = map.getBounds(),
 				southWest = bounds.getSouthWest(),
