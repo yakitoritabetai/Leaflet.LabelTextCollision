@@ -1,14 +1,14 @@
-# Leaflet.LabelTextCollision
+﻿# Leaflet.LabelTextCollision
 Leaflet.LabelTextCollision is a [LeafletJS](http://www.leafletjs.com) plug-in to display labels on vector data while avoiding label collisions.
 
-Supports Leaflet 1.0.0+ branches.
+Supports Leaflet 1.2.0+ branches.
 
 To avoid label overlapping, this plugin hides some labels. Labels defined first will have preference over labels defined last, so arrange your labels from the most important to the least important.
 
 `L.LabelTextCollision` implements a `L.Renderer` based on `L.Canvas`, as to not create an excess of DOM elements which might slow down rendering in the browser.
 
-# demo
-Check out the <a href="https://yakitoritabetai.github.io/Leaflet.LabelTextCollision/">demo</a>
+# demo 
+Check out the <a href="https://muyao1987.github.io/Leaflet.LabelTextCollision/examples">demo</a>
 
 # Usage examples
 
@@ -28,31 +28,26 @@ var map = new L.Map('map', {
 });
 ```
 
-* Instances of `L.Path` (`L.Polyline`s, `L.Polygon`s, `L.Circle`s, `L.CircleMarker`s) have a new `text` option. Use it to specify the label contents.
+* Instances of `L.Path` (`L.Polyline`s, `L.Polygon`s, `L.Circle`s, `L.CircleMarker`s) have a new `text` and `textStyle` option. Use it to specify the label contents.
 * The label will only be displayed if it doesn't collide with an existing label
 
 ```
-L.polyline(
-  [ [ 35.695786, 139.749213 ],
-          [ 35.696786, 139.748213 ],
-          [ 35.695786, 139.747213 ] ], {
-      weight : 12,
-      color : '#fe57a1',
-      text : 'Leaflet.LabelTextCollision!!!!!!!!'
-  }).addTo(map);
-```
+var p = L.polyline([[35.695786, 139.749213], [35.696786, 139.748213], [35.695786, 139.747213]], {
+    weight: 12,
+    color: '#fe57a1',
 
-# Future plans
-* Add options to control styling of the labels (including font face)
-* Fine tuning of overlap depending on zoom level
-* Refactoring...
+    text: 'polylineText',
+    textStyle: {
+        stroke: true,
+        color: '#ff0000',
+        font: "16px 'Microsoft Yahei'",
+        offsetX: 0,
+        offsetY: 0,
+    }
+}).addTo(map);
+``` 
 
-# License
-Copyright (c) 2016 Kenta Hakoishi
-Released under the MIT license
 
-However, "copyright notice" should be indicated on the place where the user is visible.
-
-ただし、「著作権表示」はユーザが見える箇所に表記して下さい。
-※画面のフッター等に著作権表示とMITライセンスであることを明記して下さい。
-ソース内ではクレジットと見なしません。
+---------------------------
+更多Leaflet示例请点击： [http://leaflet.marsgis.cn](http://leaflet.marsgis.cn)
+三维地图请点击： [http://cesium.marsgis.cn](http://cesium.marsgis.cn)
