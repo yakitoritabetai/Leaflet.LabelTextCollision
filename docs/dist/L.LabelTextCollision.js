@@ -10,6 +10,9 @@ L.LabelTextCollision = L.Canvas
 
             initialize : function(options) {
                 options = L.Util.setOptions(this, options);
+                //add
+                L.Util.stamp(this);
+                this._layers = this._layers || {};
             },
 
             _handleMouseHover : function(e, point) {
