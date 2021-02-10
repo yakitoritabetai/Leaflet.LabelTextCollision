@@ -8,7 +8,7 @@ To avoid label overlapping, this plugin hides some labels. Labels defined first 
 `L.LabelTextCollision` implements a `L.Renderer` based on `L.Canvas`, as to not create an excess of DOM elements which might slow down rendering in the browser.
 
 # demo 
- [在线Demo](http://leaflet.marsgis.cn/leaflet-example/21_textCollision.html)  
+ [在线Demo](http://mars2d.cn/example/21_textCollision.html)  
 
  
 # Usage examples
@@ -51,4 +51,4 @@ var p = L.polyline([[35.695786, 139.749213], [35.696786, 139.748213], [35.695786
 
 
 ## 其他
-更多Leaflet示例请点击： [http://leaflet.marsgis.cn](http://leaflet.marsgis.cn)
+更多Leaflet示例请点击： [http://mars2d.cn](http://mars2d.cn)
