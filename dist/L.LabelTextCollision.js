@@ -16,16 +16,24 @@ L.LabelTextCollision = L.Canvas
         },
 
         _handleMouseHover: function (e, point) {
-            var id, layer;
+            if (this._mouseHoverThrottled) {
+                return;
+            }
+            var layer, candidateHoveredLayer;
+            for (var order = this._drawFirst; order; order = order.next) {
+                layer = order.layer;
+                if (layer.options.interactive && layer._containsPoint(point)) {
+                    candidateHoveredLayer = layer;
+                }
+            }
 
-            for (id in this._drawnLayers) {
-                layer = this._drawnLayers[id];
-                if (layer.options.interactive
-                    && layer._containsPoint(point)) {
-                    L.DomUtil.addClass(this._containerText,
-                        'leaflet-interactive'); // change cursor
-                    this._fireEvent([layer], e, 'mouseover');
-                    this._hoveredLayer = layer;
+            if (candidateHoveredLayer !== this._hoveredLayer) {
+                this._handleMouseOut(e, point);
+
+                if (candidateHoveredLayer) {
+                    L.DomUtil.addClass(this._containerText, 'leaflet-interactive'); // change cursor
+                    this._fireEvent([candidateHoveredLayer], e, 'mouseover');
+                    this._hoveredLayer = candidateHoveredLayer;
                 }
             }
 
